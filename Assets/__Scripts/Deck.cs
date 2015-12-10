@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 public class Deck : MonoBehaviour {
-
 	// Suits
 	public Sprite suitClub;
 	public Sprite suitDiamond;
@@ -15,13 +13,14 @@ public class Deck : MonoBehaviour {
 	public Sprite cardBackGold;
 	public Sprite cardFront;
 	public Sprite cardFrontGold;
+
 	// Prefabs
 	public GameObject prefabSprite;
 	public GameObject prefabCard;
 
 	public bool ________________;
-
 	public PT_XMLReader xmlr;
+
 	public List<string> cardNames;
 	public List<Card> cards;
 	public List<Decorator> decorators;
@@ -37,12 +36,13 @@ public class Deck : MonoBehaviour {
 			deckAnchor = anchorGO.transform;
 		}
 		// Initialize the Dictionary of SuitSprites with necessary Sprites
-		dictSuits = new Dictionary<string, Sprite>() {
+		dictSuits = new Dictionary<string, Sprite> () {
 			{ "C", suitClub },
 			{ "D", suitDiamond },
 			{ "H", suitHeart },
-			{ "S", suitSpade }
+			{ "S", suitSpade },
 		};
+
 		ReadDeck(deckXMLText);
 		MakeCards();
 	}
@@ -119,6 +119,7 @@ public class Deck : MonoBehaviour {
 			}
 			cardDefs.Add(cDef);
 		}
+
 	}
 
 	// Get the proper CardDefinition based on Rank (1 to 14 is Ace to King)
@@ -132,6 +133,7 @@ public class Deck : MonoBehaviour {
 		}
 		return( null );
 	}
+
 	// Make the Card GameObjects
 	public void MakeCards() {
 		// cardNames will be the names of cards to build
@@ -143,6 +145,7 @@ public class Deck : MonoBehaviour {
 				cardNames.Add(s+(i+1));
 			}
 		}
+
 		// Make a List to hold all the cards
 		cards = new List<Card>();
 		// Several variables that will be reused several times
@@ -266,7 +269,8 @@ public class Deck : MonoBehaviour {
 			// Add the card to the deck
 			cards.Add (card);
 		}
-	} // This is the closing brace for MakeCards()
+	}// This is the closing brace for MakeCards()
+
 	// Find the proper face card Sprite
 	public Sprite GetFace(string faceS) {
 		foreach (Sprite tS in faceSprites) {
@@ -300,5 +304,4 @@ public class Deck : MonoBehaviour {
 		// Because oCards is a reference variable, the original that was
 		// passed in is changed as well.
 	}
-
 }
